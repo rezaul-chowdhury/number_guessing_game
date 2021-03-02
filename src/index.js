@@ -11,11 +11,12 @@ const guessSubmit = document.querySelector(".guess-submit");
 let guessCount = 1;
 let resetButton;
 
-// guessField.focus();
+guessField.focus();
 
 function checkGuess() {
   // this line of code allow the count only number...
   let userGuess = Number(guessField.value);
+  guessField.focus();
   // if user guess there 1st guess, then this pice of code will be executed...
   if (guessCount === 1) {
     // guesses paragraph textContent will be 'Previouse guesses'...
@@ -62,10 +63,32 @@ function setGameOver() {
   resetButton = document.createElement("button");
   resetButton.textContent = "Start new game";
   document.body.append(resetButton);
+  resetButton.addEventListener("click", resetGame);
 }
 
 guessSubmit.addEventListener("click", checkGuess);
 
+function resetGame() {
+  guessCount = 1;
+  const resetParas = document.querySelectorAll(".result-paras p");
+  console.log(resetParas);
+
+  for (let i = 0; i < resetParas.length; i++) {
+    resetParas[i].textContent = "";
+  }
+
+  guessField.disabled = false;
+  guessField.value = "";
+  guessField.focus();
+  guessSubmit.disabled = false;
+  resetButton.parentNode.removeChild(resetButton);
+  lastResult.style.backgroundColor = "white";
+  randomNumber = Math.floor(Math.random() * 100 + 1);
+  console.log(randomNumber);
+}
+
 // guessSubmit.addEventListener("click", function () {
 //   console.log("hello");
 // });
+
+// hello
