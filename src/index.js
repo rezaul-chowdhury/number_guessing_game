@@ -71,6 +71,26 @@ guessSubmit.addEventListener("click", checkGuess);
 function resetGame() {
   guessCount = 1;
   const resetParas = document.querySelectorAll(".result-paras p");
+  for (let i = 0; i < resetParas.length; i++) {
+    resetParas[i].textContent = "";
+  }
+
+  guessField.disabled = false;
+  guessField.value = "";
+  guessField.focus();
+  guessSubmit.disabled = false;
+  resetButton.parentNode.removeChild(resetButton);
+  lastResult.style.backgroundColor = "white";
+  randomNumber = Math.floor(Math.random() * 100 + 1);
+  // console.log(randomNumber);
+}
+
+// guessSubmit.addEventListener("click", function () {
+//   console.log("hello");
+// });
+
+// hello
+=======
   console.log(resetParas);
 
   for (let i = 0; i < resetParas.length; i++) {
@@ -90,5 +110,6 @@ function resetGame() {
 // guessSubmit.addEventListener("click", function () {
 //   console.log("hello");
 // });
+>>>>>>> GitHub
 
 // hello
